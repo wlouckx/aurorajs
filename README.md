@@ -95,7 +95,7 @@ There is not much rocket science going on in the script. Basicly this happens:
 * The results may vary in order, depending on which retreive was faster than the other.
 
 Here is an example output of the data with explanatory comments:
-```json
+```jsonc
 {
     "name": "SWPC NOAA Info",                                       // standard info
     "origin": "https://services.swpc.noaa.gov/",                    // Give SWPC/NOAA credits :)
