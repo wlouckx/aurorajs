@@ -13,10 +13,6 @@ sensor:
       - SolarWindFlux
   - platform: template
     sensors:
-      weather_temperature:
-        friendly_name: "Outdoor"
-        unit_of_measurement: '°C'
-        value_template: "{{ state_attr('weather.smhi_home', 'temperature') }}"
       aurora_probability:
         friendly_name: "Aurora Probability"
         unit_of_measurement: '%'
@@ -38,8 +34,10 @@ sensor:
         unit_of_measurement: "km/sec"
       kindex:
         value_template: '{{ states.sensor.aurorajs.attributes["KIndex"]["values"]["Kp_fraction"] | float | round(1) }}'
+        unit_of_measurement: "Kp"
       estimatedkindex:
         value_template: '{{ states.sensor.aurorajs.attributes["EstimatedKIndex"]["values"]["estimated_kp"] | float | round(1) }}'
+        unit_of_measurement: "Kp"
       solarwindflux:
         value_template: '{{ states.sensor.aurorajs.attributes["SolarWindFlux"]["values"]["Flux"] }}'
         unit_of_measurement: "p/cm³"
