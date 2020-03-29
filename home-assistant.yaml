@@ -1,0 +1,49 @@
+sensor:
+  - platform: rest
+    name: aurorajs
+    resource: http://aurorajs:8080/
+    value_template: '{{ value_json.name }}'
+    json_attributes_path: $.content
+    json_attributes:
+      - SolarWindSpeed
+      - SolarWindMagneticField
+      - HemisphericPower
+      - KIndex
+      - EstimatedKIndex
+      - SolarWindFlux
+  - platform: template
+    sensors:
+      weather_temperature:
+        friendly_name: "Outdoor"
+        unit_of_measurement: '°C'
+        value_template: "{{ state_attr('weather.smhi_home', 'temperature') }}"
+      aurora_probability:
+        friendly_name: "Aurora Probability"
+        unit_of_measurement: '%'
+        value_template: "{{ state_attr('binary_sensor.aurora_visibility', 'visibility_level') }}"
+      solarwindspeed:
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindSpeed"]["values"]["WindSpeed"] }}'
+        unit_of_measurement: "km/sec"
+      solarwindspeedtime:
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindSpeed"]["values"]["TimeToEarth"] }}'
+        unit_of_measurement: "min"
+      solarwindmagneticfieldstrength:
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindMagneticField"]["values"]["Bt"] }}'
+        unit_of_measurement: "nT"
+      solarwindmagneticfielddirection:
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindMagneticField"]["values"]["Bz"] }}'
+        unit_of_measurement: "nT"
+      hemisphericpowernorth:
+        value_template: '{{ states.sensor.aurorajs.attributes["HemisphericPower"]["values"]["North"] }}'
+        unit_of_measurement: "km/sec"
+      kindex:
+        value_template: '{{ states.sensor.aurorajs.attributes["KIndex"]["values"]["Kp_fraction"] | float | round(1) }}'
+      estimatedkindex:
+        value_template: '{{ states.sensor.aurorajs.attributes["EstimatedKIndex"]["values"]["estimated_kp"] | float | round(1) }}'
+      solarwindflux:
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindFlux"]["values"]["Flux"] }}'
+        unit_of_measurement: "p/cm³"
+camera:
+  - platform: generic
+    still_image_url: https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg
+    name: 'Aurora Oval North'

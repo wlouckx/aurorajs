@@ -1,0 +1,11 @@
+{
+  "name": "swpc_noaa_sensor",
+  "version": "1.0.0",
+  "description": "Latest SWPC/NOAA sensor info",
+  "author": "Ward Louckx <ward@louckx.com>",
+  "main": "main.js",
+  "scripts": {
+    "start": "node main.js"
+  },
+  "dependencies": {}
+}
