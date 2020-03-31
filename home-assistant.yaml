@@ -39,8 +39,8 @@ sensor:
         value_template: '{{ states.sensor.aurorajs.attributes["EstimatedKIndex"]["values"]["estimated_kp"] | round(1) }}'
         unit_of_measurement: "Kp"
       solarwindflux:
-        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindFlux"]["values"]["Flux"] }}'
-        unit_of_measurement: "p/cm³"
+        value_template: '{{ states.sensor.aurorajs.attributes["SolarWindFlux"]["values"]["density"] }}'
+        unit_of_measurement: "1/cm³"
 camera:
   - platform: generic
     still_image_url: https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg

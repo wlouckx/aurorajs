@@ -204,7 +204,7 @@ class Parser {
     async getSolarWindFlux() {
         return new Promise(ok => {
             var ret;
-            const url = "https://services.swpc.noaa.gov/products/summary/10cm-flux.json";
+            const url = "https://services.swpc.noaa.gov/products/solar-wind/plasma-5-minute.json";
             if (this.needUpdate(this.res.content.SolarWindFlux, 60)) {
                 https.get(url, res => {
                     res.setEncoding("utf8");
@@ -214,15 +214,26 @@ class Parser {
                     });
                     res.on("end", () => {
                         body = JSON.parse(body);
-                        if (body.TimeStamp != undefined) {
+                        if (Array.isArray(body)) {
+                            var header = body[0];
+                            var latest = body[body.length - 1];
                             ret = {
-                                    "last-update" : new Date(),
-                                    "values" : {},
-                                    // "original" : body
+                                "last-update" : new Date(),
+                                "values" : {},
+                                // "original" : body
                             };
-                            ret.values['Flux'] = parseFloat(body.Flux/10);
-                            ret.values['Flux-Unit'] = 'p/cm\u00B3';
-                            ret.values['time_tag'] = new Date(body.TimeStamp.concat('Z'));
+                            header.forEach(function(value, index){
+                                if (value === 'time_tag') {
+                                    ret.values[value] = new Date(latest[index].concat('Z'));
+                                } else if (value === 'density' || value === 'speed') {
+                                    ret.values[value] = parseFloat(latest[index]);
+                                } else {
+                                    ret.values[value] = parseInt(latest[index]);
+                                };
+                            });
+                            ret.values['density-unit'] = '1/cm\u00B3';
+                            ret.values['speed-unit'] = 'km/sec';
+                            ret.values['temperature-unit'] = 'K';
                             this.res.content.SolarWindFlux = ret;
                             ok(ret);
                         } else {
