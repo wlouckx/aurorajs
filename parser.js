@@ -42,6 +42,7 @@ class Parser {
                                     ret.values[value] = parseInt(latest[index]);
                                 };
                             });
+                            ret.values['Kp-unit'] = 'Kp';
                             this.res.content.KIndex = ret;
                             ok(ret);
                         } else {
@@ -92,6 +93,7 @@ class Parser {
                                     ret.values[value] = latest[index];
                                 };
                             });
+                            ret.values['estimated_kp-unit'] = 'Kp';
                             this.res.content.EstimatedKIndex = ret;
                             ok(ret);
                         } else {
@@ -203,7 +205,7 @@ class Parser {
         return new Promise(ok => {
             var ret;
             const url = "https://services.swpc.noaa.gov/products/summary/10cm-flux.json";
-            if (this.needUpdate(this.res.content.SolarWindFlux), 60) {
+            if (this.needUpdate(this.res.content.SolarWindFlux, 60)) {
                 https.get(url, res => {
                     res.setEncoding("utf8");
                     let body = "";
@@ -265,7 +267,9 @@ class Parser {
                                     // "original" : body
                             };
                             ret.values['North'] = parseInt(north);
+                            ret.values['North-unit'] = 'GW';
                             ret.values['South'] = parseInt(south);
+                            ret.values['South-unit'] = 'GW';
                             ret.values['time_tag'] = new Date(timestamp);
                             this.res.content.HemisphericPower = ret;
                             ok(ret);    

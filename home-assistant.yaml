@@ -31,12 +31,12 @@ sensor:
         unit_of_measurement: "nT"
       hemisphericpowernorth:
         value_template: '{{ states.sensor.aurorajs.attributes["HemisphericPower"]["values"]["North"] }}'
-        unit_of_measurement: "km/sec"
+        unit_of_measurement: "GW"
       kindex:
-        value_template: '{{ states.sensor.aurorajs.attributes["KIndex"]["values"]["Kp_fraction"] | float | round(1) }}'
+        value_template: '{{ states.sensor.aurorajs.attributes["KIndex"]["values"]["Kp_fraction"] | round(1) }}'
         unit_of_measurement: "Kp"
       estimatedkindex:
-        value_template: '{{ states.sensor.aurorajs.attributes["EstimatedKIndex"]["values"]["estimated_kp"] | float | round(1) }}'
+        value_template: '{{ states.sensor.aurorajs.attributes["EstimatedKIndex"]["values"]["estimated_kp"] | round(1) }}'
         unit_of_measurement: "Kp"
       solarwindflux:
         value_template: '{{ states.sensor.aurorajs.attributes["SolarWindFlux"]["values"]["Flux"] }}'
@@ -45,3 +45,6 @@ camera:
   - platform: generic
     still_image_url: https://services.swpc.noaa.gov/images/aurora-forecast-northern-hemisphere.jpg
     name: 'Aurora Oval North'
+binary_sensor:
+  - platform: aurora
+    forecast_threshold: 50

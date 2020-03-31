@@ -62,7 +62,7 @@ services:
     expose:
       - "8123"
     volumes:
-      - /home/srvoper/dockerfs/home-assistant/config:/config
+      - /home/user/homeassistant/config:/config
     networks:
       - proxy_bridge
   aurorajs:
@@ -105,7 +105,9 @@ Here is an example output of the data with explanatory comments:
             "last-update": "2020-03-29T11:12:18.345Z",              // Last time this type of data was retreived
             "values": {
                 "North": 13,                                        // Actual value for Northern Hemisphere
+                "North-unit" : "GW",
                 "South": 12,                                        // Actual value for Southern Hemisphere
+                "South-unit" : "GW",
                 "time_tag": "2020-03-29T11:10:00.000Z"              // The time tag deliverd by SWPC/NOAA
             }
         },
@@ -122,7 +124,8 @@ Here is an example output of the data with explanatory comments:
             "values": {
                 "time_tag": "2020-03-29T11:09:00.000Z",
                 "estimated_kp": 1.667,
-                "kp": "2M"
+                "kp": "2M",
+                "estimated_kp-unit": "Kp"
             }
         },
         "SolarWindSpeed": {                                         // The speed of the solar wind
@@ -150,9 +153,10 @@ Here is an example output of the data with explanatory comments:
             "values": {
                 "time_tag": "2020-03-29T06:00:00.000Z",
                 "Kp": 2,
-                "Kp_fraction": 2,
+                "Kp_fraction": 2.3,
                 "a_running": 7,
-                "station_count": 8
+                "station_count": 8,
+                "Kp-unit": "Kp"
             }
         }
     }
