@@ -55,6 +55,20 @@ class Parser {
                             ok(ret);
                         };
                     });
+                    res.on('error', () => {
+                        if (this.res.content.KIndex == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.KIndex = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.KIndex;
+                            ok(ret);
+                        };
+                        console.log('Error handled for KIndex');
+                    });
                 });
             } else {
                 ret = this.res.content.KIndex;
@@ -106,6 +120,20 @@ class Parser {
                             ok(ret);
                         };
                     });
+                    res.on('error', () => {
+                        if (this.res.content.EstimatedKIndex == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.EstimatedKIndex = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.EstimatedKIndex;
+                            ok(ret);
+                        };
+                        console.log('Error handled for EstimatedKIndex');
+                    });
                 });
             } else {
                 ret = this.res.content.EstimatedKIndex;
@@ -150,6 +178,20 @@ class Parser {
                             ok(ret);
                         };
                     });
+                    res.on('error', () => {
+                        if (this.res.content.SolarWindSpeed == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.SolarWindSpeed = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.SolarWindSpeed;
+                            ok(ret);
+                        };
+                        console.log('Error handled for SolarWindSpeed');
+                    });
                 });
             } else {
                 ret = this.res.content.SolarWindSpeed;
@@ -192,6 +234,20 @@ class Parser {
                             this.res.content.SolarWindMagneticField = ret;
                             ok(ret);
                         };
+                    });
+                    res.on('error', () => {
+                        if (this.res.content.SolarWindMagneticField == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.SolarWindMagneticField = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.SolarWindMagneticField;
+                            ok(ret);
+                        };
+                        console.log('Error handled for SolarWindMagneticField');
                     });
                 });
             } else {
@@ -245,6 +301,20 @@ class Parser {
                             ok(ret);
                         }; 
                     });
+                    res.on('error', () => {
+                        if (this.res.content.SolarWindFlux == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.SolarWindFlux = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.SolarWindFlux;
+                            ok(ret);
+                        };
+                        console.log('Error handled for SolarWindFlux');
+                    });
                 });
             } else {
                 ret = this.res.content.SolarWindFlux;
@@ -283,7 +353,7 @@ class Parser {
                             ret.values['South-unit'] = 'GW';
                             ret.values['time_tag'] = new Date(timestamp);
                             this.res.content.HemisphericPower = ret;
-                            ok(ret);    
+                            ok(ret);
                         } else {
                             ret = {
                                 "last-update" : new Date(),
@@ -292,6 +362,20 @@ class Parser {
                             this.res.content.HemisphericPower = ret;
                             ok(ret);
                         };
+                    });
+                    res.on('error', () => {
+                        if (this.res.content.HemisphericPower == undefined) {
+                            ret = {
+                                "last-update" : new Date(),
+                                "values" : {},
+                            };
+                            this.res.content.HemisphericPower = ret;
+                            ok(ret);
+                        } else {
+                            ret = this.res.content.HemisphericPower;
+                            ok(ret);
+                        };
+                        console.log('Error handled for HemispherisPower');
                     });
                 });
             } else {
