@@ -7,6 +7,10 @@ This small NodeJS application will gather several sources from SWPC/NOAA and for
 Main (personal) use is to integrate with [Home Assistant](https://github.com/home-assistant) but it can be used for other applications you may have in mind.
 
 ## Installation
+### REMARK
+Currently the server ends when an incomplete json file is received from SWPC/NOAA. The quickest workaround is to spin up the container from a docker-compose.yml file with `restart: unless-stopped` as service parameter. Please refer to the home assistant example below.
+
+### Instructions
 Clone or download this repository to a local directory and navigate into the repository:
 ```shell
 git clone https://github.com/wlouckx/aurorajs.git
