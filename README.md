@@ -114,9 +114,12 @@ Here is an example output of the data with explanatory comments:
         "SolarWindFlux": {                                          // Density of the Solar wind
             "last-update": "2020-03-29T11:12:18.312Z",
             "values": {
-                "Flux": 6.9,                                        // The Value (the higher, the better)
-                "Flux-Unit": "p/cm³",                               // Value unit
-                "time_tag": "2020-03-28T20:00:00.000Z"
+                "density": 8.27,                                    // The value
+                "speed": 416,
+                "temperature": 283016,
+                "density-unit": "1/cm³",                            // The unit
+                "speed-unit": "km/sec",
+                "temperature-unit": "K"
             }
         },
         "EstimatedKIndex": {                                        // Estimated current global Kp index. Value between 0-9
