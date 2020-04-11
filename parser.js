@@ -24,7 +24,23 @@ class Parser {
                       body += data;
                     });
                     res.on("end", () => {
-                        body = JSON.parse(body);
+                        try {
+                            body = JSON.parse(body);
+                        }
+                        catch(err) {
+                            console.log(err);
+                            if (this.res.content.KIndex == undefined) {
+                                ret = {
+                                    "last-update" : new Date(),
+                                    "values" : {},
+                                };
+                                this.res.content.KIndex = ret;
+                                ok(ret);
+                            } else {
+                                ret = this.res.content.KIndex;
+                                ok(ret);
+                            };
+                        }
                         if (Array.isArray(body)) {
                             var header = body[0];
                             var latest = body[body.length - 1];
@@ -55,7 +71,8 @@ class Parser {
                             ok(ret);
                         };
                     });
-                    res.on('error', () => {
+                    res.on('error', (e) => {
+                        console.log('Error handled for KIndex: '.concat(e.message));
                         if (this.res.content.KIndex == undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -67,7 +84,6 @@ class Parser {
                             ret = this.res.content.KIndex;
                             ok(ret);
                         };
-                        console.log('Error handled for KIndex');
                     });
                 });
             } else {
@@ -89,7 +105,23 @@ class Parser {
                       body += data;
                     });
                     res.on("end", () => {
-                        body = JSON.parse(body);
+                        try {
+                            body = JSON.parse(body);
+                        }
+                        catch(err) {
+                            console.log(err);
+                            if (this.res.content.EstimatedKIndex == undefined) {
+                                ret = {
+                                    "last-update" : new Date(),
+                                    "values" : {},
+                                };
+                                this.res.content.EstimatedKIndex = ret;
+                                ok(ret);
+                            } else {
+                                ret = this.res.content.EstimatedKIndex;
+                                ok(ret);
+                            };
+                        }
                         if (Array.isArray(body)) {
                             var header = body[0];
                             var latest = body[body.length - 1];
@@ -120,7 +152,8 @@ class Parser {
                             ok(ret);
                         };
                     });
-                    res.on('error', () => {
+                    res.on('error', (e) => {
+                        console.log('Error handled for EstimatedKIndex: '.concat(e.message));
                         if (this.res.content.EstimatedKIndex == undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -132,7 +165,6 @@ class Parser {
                             ret = this.res.content.EstimatedKIndex;
                             ok(ret);
                         };
-                        console.log('Error handled for EstimatedKIndex');
                     });
                 });
             } else {
@@ -155,7 +187,23 @@ class Parser {
                       body += data;
                     });
                     res.on("end", () => {
-                        body = JSON.parse(body);
+                        try {
+                            body = JSON.parse(body);
+                        }
+                        catch(err) {
+                            console.log(err);
+                            if (this.res.content.SolarWindSpeed == undefined) {
+                                ret = {
+                                    "last-update" : new Date(),
+                                    "values" : {},
+                                };
+                                this.res.content.SolarWindSpeed = ret;
+                                ok(ret);
+                            } else {
+                                ret = this.res.content.SolarWindSpeed;
+                                ok(ret);
+                            };
+                        }
                         if (body.TimeStamp != undefined) {
                             ret = {
                                     "last-update" : new Date(),
@@ -178,7 +226,8 @@ class Parser {
                             ok(ret);
                         };
                     });
-                    res.on('error', () => {
+                    res.on('error', (e) => {
+                        console.log('Error handled for SolarWindSpeed: '.concat(e.message));
                         if (this.res.content.SolarWindSpeed == undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -190,7 +239,6 @@ class Parser {
                             ret = this.res.content.SolarWindSpeed;
                             ok(ret);
                         };
-                        console.log('Error handled for SolarWindSpeed');
                     });
                 });
             } else {
@@ -212,7 +260,23 @@ class Parser {
                       body += data;
                     });
                     res.on("end", () => {
-                        body = JSON.parse(body);
+                        try {
+                            body = JSON.parse(body);
+                        }
+                        catch(err) {
+                            console.log(err);
+                            if (this.res.content.SolarWindMagneticField == undefined) {
+                                ret = {
+                                    "last-update" : new Date(),
+                                    "values" : {},
+                                };
+                                this.res.content.SolarWindMagneticField = ret;
+                                ok(ret);
+                            } else {
+                                ret = this.res.content.SolarWindMagneticField;
+                                ok(ret);
+                            };
+                        }
                         if (body.TimeStamp != undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -235,7 +299,8 @@ class Parser {
                             ok(ret);
                         };
                     });
-                    res.on('error', () => {
+                    res.on('error', (e) => {
+                        console.log('Error handled for SolarWindMagneticField: '.concat(e.message));
                         if (this.res.content.SolarWindMagneticField == undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -247,7 +312,6 @@ class Parser {
                             ret = this.res.content.SolarWindMagneticField;
                             ok(ret);
                         };
-                        console.log('Error handled for SolarWindMagneticField');
                     });
                 });
             } else {
@@ -269,7 +333,23 @@ class Parser {
                       body += data;
                     });
                     res.on("end", () => {
-                        body = JSON.parse(body);
+                        try {
+                            body = JSON.parse(body);
+                        }
+                        catch(err) {
+                            console.log(err);
+                            if (this.res.content.SolarWindFlux == undefined) {
+                                ret = {
+                                    "last-update" : new Date(),
+                                    "values" : {},
+                                };
+                                this.res.content.SolarWindFlux = ret;
+                                ok(ret);
+                            } else {
+                                ret = this.res.content.SolarWindFlux;
+                                ok(ret);
+                            };
+                        }
                         if (Array.isArray(body)) {
                             var header = body[0];
                             var latest = body[body.length - 1];
@@ -301,7 +381,8 @@ class Parser {
                             ok(ret);
                         }; 
                     });
-                    res.on('error', () => {
+                    res.on('error', (e) => {
+                        console.log('Error handled for SolarWindFlux: '.concat(e.message));
                         if (this.res.content.SolarWindFlux == undefined) {
                             ret = {
                                 "last-update" : new Date(),
@@ -313,7 +394,6 @@ class Parser {
                             ret = this.res.content.SolarWindFlux;
                             ok(ret);
                         };
-                        console.log('Error handled for SolarWindFlux');
                     });
                 });
             } else {
