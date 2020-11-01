@@ -3,7 +3,7 @@ const https = require('https');
 class Parser {
     res
 
-    constructor(_arg) {  
+    constructor(_arg) {
         this.res = {
             "name" : "SWPC NOAA Info",
             "origin" : "https://services.swpc.noaa.gov/",
@@ -418,10 +418,11 @@ class Parser {
                         var lines = body.trim().split('\n');
                         if (lines.length > 16) {
                             var currentline = lines[lines.length - 6];
+                            currentline = currentline.replace(/_+/g, ' ');
                             var currentlineparts = currentline.split(/\s+/);
                             var timestamp = currentlineparts[0].concat('T', currentlineparts[1], ':00.000Z');
-                            var north = currentlineparts[2];
-                            var south = currentlineparts[3];
+                            var north = currentlineparts[4];
+                            var south = currentlineparts[5];
                             ret = {
                                     "last-update" : new Date(),
                                     "values" : {},
