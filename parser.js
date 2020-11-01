@@ -418,6 +418,7 @@ class Parser {
                         var lines = body.trim().split('\n');
                         if (lines.length > 16) {
                             var currentline = lines[lines.length - 6];
+                            currentline = currentline.replace('_', ' '); 
                             var currentlineparts = currentline.split(/\s+/);
                             var timestamp = currentlineparts[0].concat('T', currentlineparts[1], ':00.000Z');
                             var north = currentlineparts[2];
